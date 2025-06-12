@@ -112,7 +112,7 @@ class AppsScreen extends ConsumerWidget {
                             vertical: 12,
                           ),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF2b2b2b),
+                            color: const Color.fromARGB(120, 59, 59, 59),
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: Row(
