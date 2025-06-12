@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:desktop_/ui/Reverpod/screens.dart';
@@ -11,18 +10,13 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final width = MediaQuery.sizeOf(context).width;
     final screens = ref.watch(screensProvider);
-
-    // اللون الأساسي الداكن للخلفية
     const baseColor = Color.fromARGB(188, 28, 28, 28);
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(136, 0, 0, 0), // شفافية الخلفية لدعم الأكريليك
+      backgroundColor: const Color.fromARGB(136, 0, 0, 0),
       body: Stack(
         children: [
-          // طبقة اللون الأساسية
-          Container(color:  baseColor),
-
-          // طبقة التوهج الخفيف في المنتصف
+          Container(color: baseColor),
           Container(
             decoration: BoxDecoration(
               gradient: RadialGradient(
@@ -35,8 +29,6 @@ class HomeScreen extends ConsumerWidget {
               ),
             ),
           ),
-
-          // محتوى الصفحة
           Row(
             children: [
               const Part1(),

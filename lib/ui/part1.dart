@@ -2,8 +2,8 @@ import 'package:desktop_/ui/Reverpod/model.dart';
 import 'package:desktop_/ui/Reverpod/screens.dart';
 import 'package:desktop_/ui/Reverpod/select.dart';
 import 'package:desktop_/ui/Reverpod/color.dart';
-import 'package:desktop_/ui/Screens/descktop.dart';
-import 'package:desktop_/ui/Screens/apps.dart';
+import 'package:desktop_/ui/Screens/Apps.dart';
+import 'package:desktop_/ui/Screens/Installed_apps.dart';
 import 'package:desktop_/ui/Screens/thems.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -85,7 +85,7 @@ class Part1 extends ConsumerWidget {
                               Part1ForDescktop();
                         } else {
                           ref.watch(screensProvider.notifier).state =
-                              AppsScreen();
+                              Scaffold();
                         }
                       },
                       child: CustomContanerPart1(
@@ -95,24 +95,6 @@ class Part1 extends ConsumerWidget {
                     );
                   },
                 ),
-              ],
-            ),
-          ),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            fillOverscroll: true,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                CustomContanerPart1(
-                  isSelected: false,
-                  item: Items(
-                    title: "الإعدادات",
-                    icon: IO.IoIosSettings,
-                    coloricon: Colors.grey,
-                  ),
-                ),
-                const SizedBox(height: 16),
               ],
             ),
           ),
@@ -187,13 +169,7 @@ class _CustomContanerPart1State extends ConsumerState<CustomContanerPart1> {
                   const SizedBox(width: 12),
                   Text(
                     widget.item.title,
-                    style: myTextStyle(context, ref, 14).copyWith(
-                      fontWeight:
-                          widget.isSelected
-                              ? FontWeight.bold
-                              : FontWeight.normal,
-                      color: Theme.of(context).textTheme.bodyMedium?.color,
-                    ),
+                    style: myTextStyle(context, ref, 14, Colors.white),
                   ),
                 ],
               ),

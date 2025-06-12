@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 class Colorapp {
   static Color colorback = Color(0xff181818);
   static Color desktop = Color(0xff2b2b2b);
+  static Color barapps = Color.fromARGB(120, 59, 59, 59);
 }
 
 TextStyle myTextStyle(

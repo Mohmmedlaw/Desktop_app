@@ -13,57 +13,42 @@ class ThemsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ww = MediaQuery.sizeOf(context).width;
     final hh = MediaQuery.sizeOf(context).height;
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(child: SizedBox(height: hh * 0.05)),
-        SliverToBoxAdapter(
-          child: Text("الثيمات", style: myTextStyle(context, ref, 20)),
-        ),
-        SliverToBoxAdapter(child: SizedBox(height: 20)),
-        SliverToBoxAdapter(
-          child: Row(
-            children: <Widget>[
-              Container(
-                width: ww * 0.18,
-                height: hh * .2,
-                decoration: BoxDecoration(
-                  border: Border.all(width: 10),
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              SizedBox(width: ww * .05),
-              SizedBox(
-                width: ww * .2,
-                height: hh * .2,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: LayoutBuilder(
-                    builder: (
-                      BuildContext context,
-                      BoxConstraints constraints,
-                    ) {
-                      const int crossAxisCount = 3;
-                      final int mainAxisCount = (5 / crossAxisCount).ceil();
-                      const double mainAxisSpacing = 8;
-                      const double crossAxisSpacing = 8;
-                      final double itemWidth =
-                          (constraints.maxWidth -
-                              (crossAxisCount - 1) * crossAxisSpacing) /
-                          crossAxisCount;
-                      final double itemHeight =
-                          (constraints.maxHeight -
-                              (mainAxisCount - 1) * mainAxisSpacing) /
-                          mainAxisCount;
-
-                      final double childAspectRatio = itemWidth / itemHeight;
-                      return GridView.builder(
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: SizedBox(
+        width: ww * 0.5,
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: SizedBox(height: hh * 0.05)),
+            SliverToBoxAdapter(
+              child: Text("الثيمات", style: myTextStyle(context, ref, 20)),
+            ),
+            SliverToBoxAdapter(child: SizedBox(height: 20)),
+            SliverToBoxAdapter(
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    width: ww * .18,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 10),
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  SizedBox(width: ww * .05),
+                  SizedBox(
+                    width: ww * .2,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GridView.builder(
+                        shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: crossAxisCount,
-                          mainAxisSpacing: mainAxisSpacing,
-                          crossAxisSpacing: crossAxisSpacing,
-                          childAspectRatio: childAspectRatio,
+                          crossAxisCount: 3,
+                          mainAxisSpacing: 8,
+                          crossAxisSpacing: 8,
+                          childAspectRatio: 1.2,
                         ),
                         itemCount: 5,
                         itemBuilder: (BuildContext context, int index) {
@@ -74,15 +59,39 @@ class ThemsScreen extends ConsumerWidget {
                             ),
                           );
                         },
-                      );
-                    },
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
+            ),
+            SliverToBoxAdapter(child: SizedBox(height: 20)),
+            SliverToBoxAdapter(
+              child: GridView.builder(
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 5,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 16,
+                  childAspectRatio: 1,
+                ),
+                itemCount: 16,
+                itemBuilder: (context, index) {
+                  return Card(
+                    color: Colorapp.barapps,
+                    child: Center(
+                      child: Text(
+                        "$index",
+                        style: myTextStyle(context, ref, 14),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
