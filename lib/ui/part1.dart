@@ -85,7 +85,7 @@ class Part1 extends ConsumerWidget {
                               Part1ForDescktop();
                         } else {
                           ref.watch(screensProvider.notifier).state =
-                              AppsScreen();
+                              Scaffold();
                         }
                       },
                       child: CustomContanerPart1(
@@ -187,13 +187,7 @@ class _CustomContanerPart1State extends ConsumerState<CustomContanerPart1> {
                   const SizedBox(width: 12),
                   Text(
                     widget.item.title,
-                    style: myTextStyle(context, ref, 14).copyWith(
-                      fontWeight:
-                          widget.isSelected
-                              ? FontWeight.bold
-                              : FontWeight.normal,
-                      color: Theme.of(context).textTheme.bodyMedium?.color,
-                    ),
+                    style: myTextStyle(context, ref, 14, Colors.white),
                   ),
                 ],
               ),
