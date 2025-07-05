@@ -3,7 +3,6 @@ import 'package:desktop_/ui/Reverpod/screens.dart';
 import 'package:desktop_/ui/Reverpod/select.dart';
 import 'package:desktop_/ui/Reverpod/color.dart';
 import 'package:desktop_/ui/Screens/descktop.dart';
-import 'package:desktop_/ui/Screens/apps.dart';
 import 'package:desktop_/ui/Screens/thems.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,7 +20,7 @@ class Part1 extends ConsumerWidget {
     Items(
       title: "الخلفيات",
       icon: PI.PiSelectionBackground,
-      coloricon: Color(0xFF7ED6A8), // أخضر هادئ
+      coloricon: Color(0xFF7ED6A8),
     ),
     Items(
       title: "الثيمات",

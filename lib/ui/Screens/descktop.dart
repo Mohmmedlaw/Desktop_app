@@ -1,4 +1,5 @@
 import 'package:desktop_/ui/Reverpod/color.dart';
+import 'package:desktop_/ui/Reverpod/desctop.dart';
 import 'package:desktop_/ui/Reverpod/screens.dart';
 import 'package:desktop_/ui/Reverpod/select.dart';
 import 'package:desktop_/ui/Screens/apps.dart';
@@ -13,6 +14,7 @@ class Part1ForDescktop extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ww = MediaQuery.sizeOf(context).width;
     final hh = MediaQuery.sizeOf(context).height;
+    final selectedIndex = ref.watch(indexselectprovider);
     return SizedBox(
       width: ww * 0.6,
       child: Column(
@@ -31,6 +33,7 @@ class Part1ForDescktop extends ConsumerWidget {
                 padding: EdgeInsets.only(right: 8),
                 itemCount: 10,
                 itemBuilder: (context, index) {
+                  final isSelected = selectedIndex == index;
                   return GestureDetector(
                     onTap: () {
                       ref.read(selectedCategoryProvider.notifier).state = 21;
@@ -87,6 +90,18 @@ class Part1ForDescktop extends ConsumerWidget {
                                 ),
                               ],
                             ),
+                          ),
+                          Switch(
+                            value: isSelected,
+                            onChanged: (value) {
+                              if (value) {
+                                ref.read(indexselectprovider.notifier).state =
+                                    index;
+                              } else {
+                                ref.read(indexselectprovider.notifier).state =
+                                    null;
+                              }
+                            },
                           ),
                         ],
                       ),

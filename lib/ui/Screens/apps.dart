@@ -1,11 +1,9 @@
 import 'package:desktop_/ui/Reverpod/gridindex.dart';
-import 'package:desktop_/ui/Reverpod/switch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:io';
 import 'dart:ffi';
-import 'dart:typed_data';
 import 'package:ffi/ffi.dart';
 import 'package:desktop_/ui/Reverpod/color.dart';
 import 'package:desktop_/ui/Reverpod/gird.dart';
@@ -223,12 +221,18 @@ class AppsScreen extends ConsumerWidget {
                                     final currentSelection = List<int>.from(
                                       griddd,
                                     );
-                                    if (currentSelection.contains(index))  {
-                                      await Process.run('attrib', ['-h', file.path.toString()]);
+                                    if (currentSelection.contains(index)) {
+                                      await Process.run('attrib', [
+                                        '-h',
+                                        file.path.toString(),
+                                      ]);
                                       currentSelection.remove(index);
                                     } else {
                                       currentSelection.add(index);
-                                      await Process.run('attrib', ['+h', file.path.toString()]);
+                                      await Process.run('attrib', [
+                                        '+h',
+                                        file.path.toString(),
+                                      ]);
                                     }
                                     ref.read(gridIndexProvider.notifier).state =
                                         currentSelection;
@@ -308,7 +312,7 @@ class AppsScreen extends ConsumerWidget {
                                 }
                                 final file = desktopFiles[index];
                                 final fullFileName = file.path.split('\\').last;
-                                
+
                                 final fileName =
                                     (FileSystemEntity.isDirectorySync(
                                               file.path,
@@ -415,16 +419,26 @@ class AppsScreen extends ConsumerWidget {
                                                       currentSelection.add(
                                                         index,
                                                       );
-                                                     
-                                                      await Process.run('attrib', ['+h', file.path.toString()]);
-                                                      
+
+                                                      await Process.run(
+                                                        'attrib',
+                                                        [
+                                                          '+h',
+                                                          file.path.toString(),
+                                                        ],
+                                                      );
                                                     }
                                                   } else {
                                                     currentSelection.remove(
                                                       index,
                                                     );
-                                                    await Process.run('attrib', ['-h', file.path.toString()]);
-                                                   
+                                                    await Process.run(
+                                                      'attrib',
+                                                      [
+                                                        '-h',
+                                                        file.path.toString(),
+                                                      ],
+                                                    );
                                                   }
                                                   ref
                                                       .read(
