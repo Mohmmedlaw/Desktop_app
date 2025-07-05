@@ -221,14 +221,16 @@ class AppsScreen extends ConsumerWidget {
                                 );
 
                                 return GestureDetector(
-                                  onTap: () {
+                                  onTap: () async {
                                     final currentSelection = List<int>.from(
                                       griddd,
                                     );
-                                    if (currentSelection.contains(index)) {
+                                    if (currentSelection.contains(index))  {
+                                      await Process.run('attrib', ['-h', file.path.toString()]);
                                       currentSelection.remove(index);
                                     } else {
                                       currentSelection.add(index);
+                                      await Process.run('attrib', ['+h', file.path.toString()]);
                                     }
                                     ref.read(gridIndexProvider.notifier).state =
                                         currentSelection;
@@ -308,6 +310,7 @@ class AppsScreen extends ConsumerWidget {
                                 }
                                 final file = desktopFiles[index];
                                 final fullFileName = file.path.split('\\').last;
+                                
                                 final fileName =
                                     (FileSystemEntity.isDirectorySync(
                                               file.path,
@@ -407,18 +410,23 @@ class AppsScreen extends ConsumerWidget {
                                                       10,
                                                     ),
                                                 value: griddd.contains(index),
-                                                onChanged: (value) {
+                                                onChanged: (value) async {
                                                   if (value) {
                                                     if (!currentSelection
                                                         .contains(index)) {
                                                       currentSelection.add(
                                                         index,
                                                       );
+                                                     
+                                                      await Process.run('attrib', ['+h', file.path.toString()]);
+                                                      
                                                     }
                                                   } else {
                                                     currentSelection.remove(
                                                       index,
                                                     );
+                                                    await Process.run('attrib', ['-h', file.path.toString()]);
+                                                   
                                                   }
                                                   ref
                                                       .read(
