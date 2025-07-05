@@ -91,17 +91,29 @@ class Part1ForDescktop extends ConsumerWidget {
                               ],
                             ),
                           ),
-                          Switch(
-                            value: isSelected,
-                            onChanged: (value) {
-                              if (value) {
-                                ref.read(indexselectprovider.notifier).state =
-                                    index;
-                              } else {
-                                ref.read(indexselectprovider.notifier).state =
-                                    null;
-                              }
-                            },
+                          Transform.scale(
+                            scale: 0.8,
+                            child: Switch(
+                              activeColor: Colors.black,
+                              activeTrackColor: const Color(0xfff18263),
+                              inactiveThumbColor: Colors.white,
+                              inactiveTrackColor: const Color.fromARGB(
+                                0,
+                                92,
+                                10,
+                                10,
+                              ),
+                              value: isSelected,
+                              onChanged: (value) {
+                                if (value) {
+                                  ref.read(indexselectprovider.notifier).state =
+                                      index;
+                                } else {
+                                  ref.read(indexselectprovider.notifier).state =
+                                      null;
+                                }
+                              },
+                            ),
                           ),
                         ],
                       ),

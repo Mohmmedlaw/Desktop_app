@@ -128,7 +128,12 @@ class AppsScreen extends ConsumerWidget {
                       const SizedBox(width: 16),
                       Text(
                         "${griddd.length} selected",
-                        style: myTextStyle(context, ref, 14, Colors.green),
+                        style: myTextStyle(
+                          context,
+                          ref,
+                          14,
+                          const Color(0xfff18263),
+                        ),
                       ),
                       const SizedBox(width: 16),
                     ],
@@ -226,6 +231,7 @@ class AppsScreen extends ConsumerWidget {
                                         '-h',
                                         file.path.toString(),
                                       ]);
+
                                       currentSelection.remove(index);
                                     } else {
                                       currentSelection.add(index);
@@ -253,7 +259,7 @@ class AppsScreen extends ConsumerWidget {
                                       side: BorderSide(
                                         color:
                                             griddd.contains(index)
-                                                ? Colors.green
+                                                ? const Color(0xfff18263)
                                                 : Colors.transparent,
                                         width: griddd.contains(index) ? 3 : 2,
                                       ),

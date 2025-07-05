@@ -153,7 +153,7 @@ class _CustomContanerPart1State extends ConsumerState<CustomContanerPart1> {
               widget.isSelected
                   ? selectedColor
                   : _isHovering
-                  ? Colors.white.withValues(alpha: .05)
+                  ? Colors.white.withOpacity(.05)
                   : Colors.transparent,
           borderRadius: BorderRadius.circular(4),
         ),
