@@ -84,14 +84,12 @@ class AppsScreen extends ConsumerWidget {
         final currentSwitches = ref.watch(switchListProvider);
         if (currentSwitches.length != desktopFiles.length) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            // تهيئة الـ switches بناءً على العناصر المحددة في griddd
             final initialSwitches = List.generate(desktopFiles.length, (index) {
               return griddd.contains(index);
             });
             ref.read(switchListProvider.notifier).state = initialSwitches;
           });
         } else {
-          // تحديث الـ switches لتتزامن مع griddd إذا تغيرت
           final shouldUpdate = List.generate(desktopFiles.length, (index) {
             return griddd.contains(index);
           });
